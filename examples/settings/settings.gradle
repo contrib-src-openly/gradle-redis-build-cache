@@ -7,7 +7,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'net.idlestate:gradle-redis-build-cache:1.3.0'
+        classpath 'net.idlestate:gradle-redis-build-cache:1.4.0'
     }
 }
 
@@ -25,6 +25,7 @@ buildCache {
         host = '127.0.0.1'
         port = 6379
         timeToLive = 2*24*60 // two days in minutes
+        ssl = false // no SSL for localhost - default: false
         enabled = true
         push = true
     }
