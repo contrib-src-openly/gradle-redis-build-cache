@@ -25,6 +25,10 @@ The build cache takes the following options:
 |net.idlestate.gradle.caching.redis.ttl
 |14400 (10 days in minutes)
 
+|ssl
+|net.idlestate.gradle.caching.redis.ssl
+|false
+
 |===
 
 ## Usage
@@ -88,6 +92,7 @@ buildCache {
         host = '127.0.0.1'
         port = 6379
         timeToLive = 2*24*60 // two days in minutes
+        ssl = false // no SSL for localhost
         enabled = true
         push = true
     }

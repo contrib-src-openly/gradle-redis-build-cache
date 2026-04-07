@@ -23,12 +23,14 @@ import org.gradle.caching.configuration.AbstractBuildCache;
 public class RedisBuildCache extends AbstractBuildCache {
     private static final int DEFAULT_PORT = 6379;
     private static final int DEFAULT_TIME_TO_LIVE = 10 * 24 * 60; // 10 days as minutes
+    private static final boolean DEFAULT_SSL = false;
 
     private String _host = System.getProperty( "net.idlestate.gradle.caching.redis.host", "localhost" );
     private int _port = getDefaultPort();
     private String _password = System.getProperty( "net.idlestate.gradle.caching.redis.password", null );
 
     private int _timeToLive = getDefaultTimeToLive();
+    private boolean _ssl = Boolean.parseBoolean( System.getProperty( "net.idlestate.gradle.caching.redis.ssl", Boolean.toString( DEFAULT_SSL ) ) );
 
     private static int getDefaultPort() {
         final String port = System.getProperty( "net.idlestate.gradle.caching.redis.port", Integer.toString( DEFAULT_PORT ) );
@@ -93,5 +95,16 @@ public class RedisBuildCache extends AbstractBuildCache {
 
     public void setTimeToLive( final int timeToLive ) {
         _timeToLive = timeToLive;
+    }
+
+    /**
+     * @return SSL - default: false.
+     */
+    public boolean getSSL() {
+        return _ssl;
+    }
+
+    public void setSSL( final boolean ssl ) {
+        _ssl = ssl;
     }
 }

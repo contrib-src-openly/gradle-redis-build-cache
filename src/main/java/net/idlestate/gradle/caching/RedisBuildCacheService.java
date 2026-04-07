@@ -52,8 +52,8 @@ public class RedisBuildCacheService implements BuildCacheService {
     private final JedisPool _jedisPool;
     private final int _timeToLive;
 
-    RedisBuildCacheService( final String host, final int port, final String password, final int timeToLive ) {
-        _jedisPool = new JedisPool( new JedisPoolConfig(), host, port, Protocol.DEFAULT_TIMEOUT, password );
+    RedisBuildCacheService( final String host, final int port, final String password, final int timeToLive, final boolean ssl ) {
+        _jedisPool = new JedisPool( new JedisPoolConfig(), host, port, Protocol.DEFAULT_TIMEOUT, password, ssl );
         _timeToLive = timeToLive * 60;
     }
 
