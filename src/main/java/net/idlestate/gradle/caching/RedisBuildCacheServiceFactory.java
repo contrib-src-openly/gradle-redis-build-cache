@@ -30,8 +30,9 @@ public class RedisBuildCacheServiceFactory implements BuildCacheServiceFactory<R
                 .config( "host", configuration.getHost() )
                 .config( "port", Integer.toString( configuration.getPort() ) )
                 .config( "password", configuration.getPassword() == null ? "<without password>" : "<password given>" )
-                .config( "ttl", Integer.toString( configuration.getTimeToLive() ) );
+                .config( "ttl", Integer.toString( configuration.getTimeToLive() ) )
+                .config( "ssl", Boolean.toString( configuration.getSSL() ) );
 
-        return new RedisBuildCacheService( configuration.getHost(), configuration.getPort(), configuration.getPassword(), configuration.getTimeToLive() );
+        return new RedisBuildCacheService( configuration.getHost(), configuration.getPort(), configuration.getPassword(), configuration.getTimeToLive(), configuration.getSSL() );
     }
 }
